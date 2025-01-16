@@ -19,7 +19,7 @@ This frontend application works in conjunction with:
 ### 1. 🖥️ **A Backend Server**
 - The backend is responsible for handling authentication, API endpoints, and business logic. It communicates with the frontend through RESTful APIs.
 - The backend must be configured to accept JWT tokens for secure user authentication and role-based access control (RBAC).
-- Detailed instructions for setting up the backend server, including API documentation, are available in the corresponding [backend repository](#).
+- Detailed instructions for setting up the backend server, including API documentation, are available in the corresponding [backend repository](https://github.com/ElTimoYT/user-app-backend).
 
 ### 2. 🗄️ **A Database**
 - The backend connects to a database (e.g., **MySQL**, **PostgreSQL**, or **MongoDB**) to persist user data, authentication credentials, and other records.
