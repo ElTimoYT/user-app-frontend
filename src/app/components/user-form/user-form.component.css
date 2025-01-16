@@ -1,0 +1,62 @@
+/* Card styling */
+.card {
+    background-color: #343a40; /* Fondo oscuro para la tarjeta */
+    color: #f8f9fa; /* Texto blanco */
+    border-radius: 0.5rem; /* Bordes redondeados */
+}
+
+/* Input fields */
+.form-control {
+    background-color: #495057; /* Fondo oscuro para inputs */
+    color: #f8f9fa; /* Texto blanco en inputs */
+    border: 1px solid #6c757d; /* Borde claro */
+    border-radius: 0.375rem; /* Bordes ligeramente redondeados */
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #007bff; /* Cambio de color del borde al enfocarse */
+    background-color: #343a40; /* Fondo más oscuro al enfocarse */
+    box-shadow: none;
+}
+
+/* Validation feedback (error messages) */
+.invalid-feedback {
+    font-size: 0.875rem;
+    color: #dc3545; /* Color rojo para el mensaje de error */
+}
+
+/* Button styling */
+.btn {
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff; /* Azul para los botones principales */
+    border-color: #007bff;
+}
+
+.btn-primary:disabled {
+    background-color: #6c757d; /* Botón deshabilitado */
+    border-color: #6c757d;
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Fondo gris para el botón secundario */
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268; /* Cambio de color al pasar el mouse */
+}
+
+.btn:hover {
+    transform: translateY(-2px); /* Efecto de desplazamiento al pasar el ratón */
+}
+
+/* Margin bottom for inputs */
+.my-2 {
+    margin-bottom: 1rem !important;
+}

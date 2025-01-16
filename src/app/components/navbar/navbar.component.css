@@ -1,0 +1,58 @@
+/* Navbar oscuro */
+.navbar-dark {
+    background-color: #343a40;  /* Fondo oscuro */
+}
+
+/* Fondo del navbar en modo oscuro */
+body.dark-theme .navbar-dark {
+    background-color: #1a1a1a;  /* Fondo más oscuro en el tema oscuro */
+}
+
+/* Estilos de los enlaces del navbar */
+.navbar-nav .nav-link {
+    color: #f8f9fa;  /* Texto blanco */
+    font-size: 1.1rem;  /* Texto ligeramente más grande */
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffc107;  /* Color amarillo al pasar el mouse */
+}
+
+/* Estilos del colapsador */
+.navbar-collapse {
+    background-color: #212529;  /* Fondo oscuro para el colapsador */
+    color: #f8f9fa;  /* Texto blanco en el colapsador */
+}
+
+/* Asegura que el colapsador se vea correctamente en modo oscuro */
+body.dark-theme .navbar-collapse {
+    background-color: #212529;  /* Fondo más oscuro para el tema oscuro */
+}
+
+/* Asegura que los enlaces dentro del colapsador sean visibles y en modo oscuro */
+.navbar-collapse .nav-link {
+    color: #f8f9fa;  /* Color blanco para los enlaces */
+    transition: color 0.3s ease;
+}
+
+/* Cambio de color de los enlaces del colapsador al pasar el ratón */
+.navbar-collapse .nav-link:hover {
+    color: #ffc107;  /* Color amarillo al pasar el ratón */
+}
+
+/* Asegura que el botón de hamburguesa no tenga bordes extraños cuando se activa */
+.navbar-toggler:focus {
+    box-shadow: none;  /* Elimina el borde o sombra cuando el botón está en foco */
+}
+
+/* Para los dispositivos pequeños, asegurar que el colapsador se vea correctamente */
+@media (max-width: 768px) {
+    .navbar-collapse {
+        background-color: #212529;  /* Fondo oscuro para el colapsador */
+    }
+
+    .navbar-collapse .nav-link {
+        font-size: 1.1rem;  /* Aumenta ligeramente el tamaño de los enlaces en el colapsador */
+    }
+}

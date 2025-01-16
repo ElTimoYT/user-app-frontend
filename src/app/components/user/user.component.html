@@ -1,47 +1,69 @@
-<h3>{{title}}</h3>
+@if(loading) {
+    <div class="d-flex justify-content-center my-5 ">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+} @else { 
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-3 fade-in">
+        <h3 class="mb-3 mb-md-0">{{ title }}</h3>
 
-    <button class="btn btn-primary my-2" [routerLink]="['/users/create']">Crear usuario</button>
+        @if(admin){
+            <button class="btn btn-primary rounded-pill px-4 my-2" [routerLink]="['/users/create']">
+                <i class="fa fa-plus-circle"></i> New User
+            </button>
+        }
+    </div>
 
-@if (users.length == 0) {
-    <div class="alert alert-warning">No hay registros en el sistema!</div>
-}@else {
-    <table class="table table-hover table-striped">
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>Name</th>
-                <th>Lastname</th>
-                <th>Email</th>
-                <th>Username</th>
-                <th>Remove</th>
-                <th>Update</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (user of users; track $index) {
-                <tr>
-                    <td>{{user.id}}</td>
-                    <td>{{user.name}}</td>
-                    <td>{{user.lastname}}</td>
-                    <td>{{user.email}}</td>
-                    <td>{{user.username}}</td>
-                    <td>
-                        <button 
-                        class="btn btn-danger btn-sm"
-                        (click)="onRemoveUser(user.id)">
-                            Remove
-                        </button>
-                    </td>
-                    <td>
-                        <button 
-                        [routerLink]="['/users/edit', user.id]"
-                        class="btn btn-info btn-sm">
-                            Update
-                        </button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    @if (users.length == 0) {
+        <div class="alert alert-warning text-center">There aren't any registration!</div>
+    } @else {
+        <div class="table-responsive fade-in">
+            <table class="table table-hover table-striped table-borderless shadow-sm table-dark rounded">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Lastname</th>
+                        <th>Email</th>
+                        <th>Username</th>
+
+                        @if(admin){
+                            <th>Remove</th>
+                            <th>Update</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @for (user of users; track $index) {
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.lastname }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.username }}</td>
+
+                            @if(admin){
+                                <td>
+                                    <button class="btn btn-danger btn-sm rounded-pill" (click)="onRemoveUser(user.id)">
+                                        <i class="fa fa-trash"></i> Remove
+                                    </button>
+                                </td>
+                                <td>
+                                    <button [routerLink]="['/users/edit', user.id]" class="btn btn-info btn-sm rounded-pill">
+                                        <i class="fa fa-edit"></i> Update
+                                    </button>
+                                </td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+    <div class="d-flex justify-content-center mt-4 fade-in">
+        <paginator [paginator]="paginator" [url]="'/users/page'" />
+    </div>
 }
-<paginator [paginator]="paginator" [url]="'/users/page'"/>

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
-import { Observable} from 'rxjs';
+import { map, Observable} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { BACKEND_URL } from '../config/config';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class UserService {
   private users: User[] = []
   constructor(private http: HttpClient) { }
 
-  private url: string = 'http://localhost:8081/api/users'
+  private url: string = `${BACKEND_URL}/api/users`;	
 
   findAll(): Observable<User[]> {
     return this.http.get<User[]>(this.url)
@@ -33,8 +34,10 @@ export class UserService {
     return this.http.put<User>(`${this.url}/${user.id}`, user)
   }
 
-  delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.url}/${id}`);
+  remove(id: number): Observable<number> {
+    return this.http.delete<number>(`${this.url}/${id}`).pipe(
+      map(() => id)
+    );
   }
 
 }

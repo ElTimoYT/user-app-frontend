@@ -18,6 +18,8 @@ export class SharingDataService {
 
   private _pageUsersEventEmitter = new EventEmitter();
 
+  private _handlerLoginEventEmitter = new EventEmitter();
+
   constructor() { }
 
   get idUserEventEmitter(): EventEmitter<number> {
@@ -42,5 +44,9 @@ export class SharingDataService {
 
   get pageUsersEventEmitter(){
     return this._pageUsersEventEmitter;
+  }
+
+  get handlerLoginEventEmitter(){
+    return this._handlerLoginEventEmitter;
   }
 }

@@ -39,3 +39,35 @@
         opacity: 1
     }
 }
+
+body {
+    background-color: #121212; 
+    color: #ffffff;          
+    margin: 0;
+  }
+  
+  a {
+    color: #0d6efd;
+  }
+  
+  a:hover {
+    color: #0b5ed7;
+  }
+  
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); 
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn .5s ease-in-out;
+  -webkit-animation: fadeIn .5s ease-in-out;
+}
+  

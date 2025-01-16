@@ -1,53 +1,66 @@
 import { Component, OnInit} from '@angular/core';
 import { User } from '../../models/user';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { UserService } from '../../services/user.service';
-import { SharingDataService } from '../../services/sharing-data.service';
 import { PaginatorComponent } from '../paginator/paginator.component';
+import { AuthService } from '../../services/auth.service';
+import { Store } from '@ngrx/store';
+import { load, remove } from '../../store/users/users.actions';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'user',
   standalone: true,
   imports: [RouterModule, PaginatorComponent],
-  templateUrl: './user.component.html'
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit{
 
-  title: string = 'Listado de Usuarios'
+  title: string = 'User List'
 
   users: User[] = []
 
   paginator: any = {};
 
+  loading: boolean = true;
+
   constructor(
-    private sharingData: SharingDataService,
-    private service:UserService,
+    private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute) {
-      if(this.router.getCurrentNavigation()?.extras.state){
-        this.users = this.router.getCurrentNavigation()?.extras.state!['users'];
-        this.paginator = this.router.getCurrentNavigation()?.extras.state!['paginator'];
-      }
+    private route: ActivatedRoute,
+    private store: Store<{users: any}>) {
+      
+      this.store.select('users').subscribe(state => {
+        this.users = state.users;
+        this.paginator = state.paginator;
+        this.loading = state.loading;
+      });
   }
   ngOnInit(): void {
-    if(this.users == undefined || this.users == null || this.users.length == 0){
-      //this.service.findAll().subscribe(users => this.users = users);
-      this.route.paramMap.subscribe(params => {
-        const page: number = +(params.get('page') || '0');
-        this.service.findAllPageable(page).subscribe( pageable => {
-          this.users = pageable.content as User[];
-          this.paginator = pageable;
-          this.sharingData.pageUsersEventEmitter.emit({users: this.users, paginator: this.paginator});
-        });
-      });
-    }
+    this.route.paramMap.subscribe(params => this.store.dispatch(load({page: +(params.get('page') || '0')})));
   }
 
   onRemoveUser(id: number): void {
-    this.sharingData.idUserEventEmitter.emit(id);
+    Swal.fire({
+      title: "Are you sure to delete?",
+      text: "User data will be permanently deleted!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+          this.store.dispatch(remove({id}));
+      }
+    });
   }
 
   onSelectedUser(user: User): void{
     this.router.navigate(['/users/edit', user.id]);
+  }
+
+  get admin(){
+    return this.authService.isAdmin();
   }
 }

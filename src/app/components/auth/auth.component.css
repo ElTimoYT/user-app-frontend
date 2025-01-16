@@ -1,0 +1,84 @@
+/* Fondo desenfocado en la página */
+body {
+    background: linear-gradient(135deg, #1c1c1c, #2c2c2c);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+    margin: 0;
+  }
+  
+  /* Estilo para la tarjeta de login */
+  .card {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra suave */
+    transition: box-shadow 0.3s ease-in-out;
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con transparencia */
+  }
+  
+  /* Efecto de hover en la tarjeta */
+  .card:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7); /* Sombra más fuerte al pasar el mouse */
+  }
+  
+  /* Animación de aparición */
+  .card-body {
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .card-header {
+    background: linear-gradient(135deg, #6c757d, #495057);  /* Gradiente de gris a gris oscuro */
+    color: #ffffff;  /* Texto claro */
+    border-bottom: 1px solid #444;  /* Línea sutil */
+    border-radius: 10px 10px 0 0;  /* Bordes redondeados arriba */
+  }
+  
+  /* Transición para campos de entrada */
+  .card .form-control {
+    border-radius: 10px;
+    transition: border-color 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid #ccc; /* Borde gris claro */
+  }
+  
+  .card .form-control:focus {
+    border-color: #007bff; /* Borde azul cuando está enfocado */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Efecto de foco con sombra azul */
+  }
+  
+  /* Estilo de los placeholders */
+  .card .form-control::placeholder {
+    color: #dcdcdc; /* Color claro para los placeholders */
+  }
+  
+  /* Botón de login con transición */
+  .card button[type="submit"] {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    width: 100%;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+  }
+  
+  .card button[type="submit"]:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Agrandar ligeramente el botón */
+  }
+  
+  .card button[type="submit"]:active {
+    transform: scale(1); /* Vuelve al tamaño original cuando se hace clic */
+  }
+  
+  /* Animación para fade-in */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }

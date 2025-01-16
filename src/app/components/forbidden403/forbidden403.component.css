@@ -1,0 +1,55 @@
+/* Estilo básico para la alerta */
+.alert {
+    border-radius: 10px;  /* Bordes redondeados */
+    padding: 15px;  /* Espaciado dentro de la alerta */
+    font-size: 1.1rem;  /* Tamaño de fuente ligeramente mayor */
+    position: relative;  /* Para posicionar el icono de advertencia */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Sombra suave */
+    transition: background-color 0.3s ease, transform 0.3s ease;  /* Transiciones suaves */
+    margin: 15px 0;  /* Margen superior e inferior */
+  }
+  
+  /* Estilo específico para la alerta de error (danger) */
+  .alert-danger {
+    background-color: #dc3545;  /* Fondo rojo claro */
+    color: white;  /* Texto blanco */
+  }
+  
+  /* Cambiar el color al hacer hover */
+  .alert-danger:hover {
+    background-color: #c82333;  /* Fondo rojo más oscuro */
+    transform: scale(1.05);  /* Agrandar un poco al hacer hover */
+  }
+  
+  /* Agregar icono de advertencia al lado del texto */
+  .alert .alert-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);  /* Centrar verticalmente */
+    font-size: 1.5rem;  /* Tamaño del icono */
+    color: #fff;  /* Color blanco para el icono */
+  }
+  
+  /* Animación para la alerta */
+  @keyframes fadeInAlert {
+    0% {
+      opacity: 0;
+      transform: translateX(-50%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Aplicar la animación cuando aparece */
+  .alert {
+    animation: fadeInAlert 0.6s ease-out;
+  }
+  
+  /* Para adaptar al modo oscuro */
+  body.dark-theme .alert-danger {
+    background-color: #7a1414;  /* Fondo rojo más oscuro en modo oscuro */
+    color: #fff;  /* Texto blanco */
+  }

@@ -1,30 +1,27 @@
 @if (paginator.totalPages > 1) {
-    <ul class="pagination">
+    <ul class="pagination justify-content-center">
         <li class="page-item">
             <a href="" class="page-link" [routerLink]="[url, 0]">
-                <svg viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><style>@keyframes slide-13{to{transform:translateX(-1px)}}</style><rect width="14" height="14" x="5.523" y="5" stroke="#0A0A30" stroke-width="1.5" rx="4"/><path fill="#265BFF" stroke="#265BFF" stroke-linecap="round" stroke-width=".4" d="M13.012 14.846a.429.429 0 00.659-.549L11.757 12l1.914-2.297a.429.429 0 10-.659-.549l-2.138 2.566a.428.428 0 000 .56l2.138 2.566z" style="animation:slide-13 1s infinite alternate both cubic-bezier(1,-.01,0,.98)"/></svg>
+                <i class="fas fa-angle-double-left"></i> <!-- Icono de "Primera página" -->
             </a>
         </li>
         @if (paginator.number > 0) {
             <li class="page-item">
                 <a href="" class="page-link" [routerLink]="[url, paginator.number - 1]" >
-                    <svg viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><style>@keyframes slide-14{to{transform:translateX(-2px)}}</style><path fill="#0A0A30" d="M14.008 17.692a.857.857 0 001.317-1.098L11.495 12l3.829-4.594a.857.857 0 00-1.317-1.098L9.73 11.44a.85.85 0 00-.208.56.854.854 0 00.208.56l4.277 5.132z" style="animation:slide-14 1s infinite alternate both cubic-bezier(1,-.01,0,.98)"/></svg>
+                    <i class="fas fa-chevron-left"></i> <!-- Icono de "Página anterior" -->
                 </a>
             </li>
         }
         @if (paginator.number < paginator.totalPages - 1) {
             <li class="page-item">
                 <a href="" class="page-link" [routerLink]="[url, paginator.number + 1]">
-                    <svg viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
-                        <style>@keyframes slide-17{to{transform:translateX(2px)}}</style>
-                        <path fill="#0A0A30" d="M11.039 17.692a.857.857 0 01-1.317-1.098L13.55 12 9.722 7.406a.857.857 0 111.317-1.098l4.276 5.132a.848.848 0 01.208.56.854.854 0 01-.208.56l-4.276 5.132z" style="animation:slide-17 1s infinite alternate both cubic-bezier(1,-.01,0,.98)"/>
-                    </svg>
+                    <i class="fas fa-chevron-right"></i> <!-- Icono de "Página siguiente" -->
                 </a>
             </li>
         }
         <li class="page-item">
             <a href="" class="page-link" [routerLink]="[url, paginator.totalPages - 1]">
-                <svg viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><style>@keyframes slide-16{to{transform:translateX(1px)}}</style><rect width="14" height="14" x="5.523" y="5" stroke="#0A0A30" stroke-width="1.5" rx="4"/><path fill="#265BFF" stroke="#265BFF" stroke-linecap="round" stroke-width=".4" d="M11.781 9.154a.429.429 0 00-.659.549L13.038 12l-1.915 2.297a.429.429 0 10.659.549l2.138-2.566a.428.428 0 000-.56l-2.138-2.566z" style="animation:slide-16 1s infinite alternate both cubic-bezier(1,-.01,0,.98)"/></svg>
+                <i class="fas fa-angle-double-right"></i> <!-- Icono de "Última página" -->
             </a>
         </li>
     </ul>

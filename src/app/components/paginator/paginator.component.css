@@ -1,0 +1,44 @@
+/* Estilos generales para la paginación */
+.pagination {
+    display: flex;
+    justify-content: center; /* Centra los botones */
+    align-items: center;
+    list-style: none;
+    padding-left: 0;
+}
+
+.page-item {
+    margin: 0 5px;
+}
+
+.page-link {
+    background-color: #343a40; /* Fondo oscuro para el botón */
+    color: #fff;  /* Color de texto blanco */
+    border: 1px solid #444;  /* Bordes sutiles */
+    border-radius: 5px;  /* Bordes redondeados */
+    padding: 8px 16px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Efecto hover sobre los enlaces */
+.page-link:hover {
+    background-color: #265BFF;  /* Fondo azul cuando el mouse pasa por encima */
+    color: #fff;  /* Asegura que el texto siga siendo blanco */
+    transform: scale(1.1);  /* Aumenta ligeramente el tamaño al pasar el mouse */
+}
+
+/* Efecto cuando la página está deshabilitada */
+.page-item.disabled .page-link {
+    background-color: #777;  /* Fondo gris */
+    cursor: not-allowed;  /* Cambia el cursor para mostrar que está deshabilitado */
+}
+
+/* Efecto de animación para los íconos de los botones */
+.page-link svg {
+    transition: transform 0.3s ease;
+}
+
+.page-item:hover .page-link svg {
+    transform: scale(1.2); /* Aumenta ligeramente el tamaño del icono al pasar el mouse */
+}
